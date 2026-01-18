@@ -7,8 +7,8 @@ export default function Navbar() {
                 <div className="flex gap-6 items-center text-sm">
                     <Link to='/' className="text-gray-700 hover:text-blue-600"> HomePage</Link>
             
-                     <Link to='/Sigin' className="text-gray-700 hover:text-blue-600"> SignIn</Link>
-                     <Link to='/Sigin' className="text-gray-700 hover:text-blue-600">LogIn</Link>
+                     <Link to='/Signin' className="text-gray-700 hover:text-blue-600"> SignIn</Link>
+                     <Link to='/Signin' className="text-gray-700 hover:text-blue-600">LogIn</Link>
            
                 </div>
              </div>
