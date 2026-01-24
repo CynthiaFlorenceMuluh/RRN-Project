@@ -63,65 +63,7 @@ export default function Homepage() {
                 </div>
             </div>
 
-            {/* Features Section 
-            <div className="py-16 bg-gray-50">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-4xl font-bold text-center mb-12">Why Choose TRUSTLINE?</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    
-                        <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
-                            <div className="text-4xl mb-4">�</div>
-                            <h3 className="text-2xl font-semibold mb-2">Find Vendors by Phone</h3>
-                            <p className="text-gray-600">Easily search and locate trusted vendors using their telephone contact information.</p>
-                        </div>
-
-                        
-                        <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
-                            <div className="text-4xl mb-4">⭐</div>
-                            <h3 className="text-2xl font-semibold mb-2">Read Real Reviews</h3>
-                            <p className="text-gray-600">Access honest reviews and ratings from verified users to make informed decisions.</p>
-                        </div>
-
-                        
-                        <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
-                            <div className="text-4xl mb-4">🔒</div>
-                            <h3 className="text-2xl font-semibold mb-2">Trust & Security</h3>
-                            <p className="text-gray-600">All vendor information is verified and secured to protect your interests.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-            <div className="py-16">
-                <div className="max-w-6xl mx-auto px-6">
-                    <h2 className="text-4xl font-bold text-center mb-12">How It Works</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        <div className="text-center">
-                            <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
-                            <h3 className="font-semibold mb-2">Sign Up</h3>
-                            <p className="text-gray-600 text-sm">Create your account in minutes</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
-                            <h3 className="font-semibold mb-2">Verify</h3>
-                            <p className="text-gray-600 text-sm">Complete verification process</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
-                            <h3 className="font-semibold mb-2">Search Vendor</h3>
-                            <p className="text-gray-600 text-sm">Find trusted vendors by phone number</p>
-                        </div>
-                        <div className="text-center">
-                            <div className="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
-                            <h3 className="font-semibold mb-2">Rate and Review</h3>
-                            <p className="text-gray-600 text-sm">Share your expirience and protect others</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            */}
+         
             <div className="bg-blue-950 text-white py-16">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <h2 className="text-4xl font-bold mb-4">Ready to Review</h2>
