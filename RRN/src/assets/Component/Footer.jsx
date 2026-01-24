@@ -26,7 +26,8 @@ export default function Footer() {
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Contact</h4>
                         <p className="text-gray-300 text-sm mb-2">Email: info@trustline.com</p>
-                        <p className="text-gray-300 text-sm">Phone: +1 (555) 123-4567</p>
+                        <p className="text-gray-300 text-sm">Phone: + (237 650148156)
+                        </p>
                     </div>
                 </div>
 

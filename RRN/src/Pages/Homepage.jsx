@@ -63,26 +63,26 @@ export default function Homepage() {
                 </div>
             </div>
 
-            {/* Features Section */}
+            {/* Features Section 
             <div className="py-16 bg-gray-50">
                 <div className="max-w-6xl mx-auto px-6">
                     <h2 className="text-4xl font-bold text-center mb-12">Why Choose TRUSTLINE?</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Feature 1 */}
+                    
                         <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
                             <div className="text-4xl mb-4">�</div>
                             <h3 className="text-2xl font-semibold mb-2">Find Vendors by Phone</h3>
                             <p className="text-gray-600">Easily search and locate trusted vendors using their telephone contact information.</p>
                         </div>
 
-                        {/* Feature 2 */}
+                        
                         <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
                             <div className="text-4xl mb-4">⭐</div>
                             <h3 className="text-2xl font-semibold mb-2">Read Real Reviews</h3>
                             <p className="text-gray-600">Access honest reviews and ratings from verified users to make informed decisions.</p>
                         </div>
 
-                        {/* Feature 3 */}
+                        
                         <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition">
                             <div className="text-4xl mb-4">🔒</div>
                             <h3 className="text-2xl font-semibold mb-2">Trust & Security</h3>
@@ -92,7 +92,7 @@ export default function Homepage() {
                 </div>
             </div>
 
-            {/* How It Works Section */}
+            
             <div className="py-16">
                 <div className="max-w-6xl mx-auto px-6">
                     <h2 className="text-4xl font-bold text-center mb-12">How It Works</h2>
@@ -121,7 +121,7 @@ export default function Homepage() {
                 </div>
             </div>
 
-            {/* CTA Section */}
+            */}
             <div className="bg-blue-950 text-white py-16">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <h2 className="text-4xl font-bold mb-4">Ready to Review</h2>
