@@ -6,6 +6,7 @@ import Navbar from './assets/Component/Navigation.jsx'
 import Footer from './assets/Component/Footer.jsx'
 import Profile from './Pages/Profile.jsx'
 import Dashboard from './Pages/Dashboard.jsx'
+import Login from './Pages/login.jsx'
 function App() {
   return (
     <div>
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Homepage/>} />
       <Route path='/Signin' element={<Signin/>} />
+      <Route path='/login' element={<Login/>}/>
       <Route path='/Profile' element={<Profile/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
       </Routes>
