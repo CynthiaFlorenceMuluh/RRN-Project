@@ -10,7 +10,7 @@ export default function Homepage() {
             <div className="bg-gradient-to-r from-blue-600 to-blue-900 text-white py-20">
                 <div className="max-w-6xl mx-auto px-6 text-center">
                     <h1 className="text-5xl font-bold mb-4">TRUSTLINE, Building Trust in business</h1>
-                    <p className="text-xl mb-8 text-blue-100">Your trusted platform for secure,reliable and traansparent business</p>
+                    <p className="text-xl mb-8 text-blue-100">Your trusted platform for secure, reliable and transparent business</p>
                     <div className="flex gap-4 justify-center">
                         <Link to="/Signin" className="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100">Get Started</Link>
                         <button className="border-2 border-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-blue-600">Learn More</button>
