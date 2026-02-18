@@ -1,4 +1,4 @@
-export default function Profile(){
+export default function Account(){
     return(
         <>
         <h1>Hello</h1>

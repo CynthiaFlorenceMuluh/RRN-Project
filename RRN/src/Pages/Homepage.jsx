@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export default function Homepage() {
+export default function Home() {
     const [phoneSearch, setPhoneSearch] = useState("");
     const [searchResults, setSearchResults] = useState(null);
     return (
         <>
             {/* Hero Section */}
-            <div className="bg-gradient-to-r from-blue-600 to-blue-900 text-white py-20">
+            <div className="bg-linear-to-r from-blue-600 to-blue-900 text-white py-20">
                 <div className="max-w-6xl mx-auto px-6 text-center">
                     <h1 className="text-5xl font-bold mb-4">TRUSTLINE, Building Trust in business</h1>
                     <p className="text-xl mb-8 text-blue-100">Your trusted platform for secure, reliable and transparent business</p>
@@ -19,7 +19,7 @@ export default function Homepage() {
             </div>
 
             {/* Vendor Search Section */}
-            <div className="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
+            <div className="py-16 bg-linear-to-r from-blue-50 to-blue-100">
                 <div className="max-w-4xl mx-auto px-6">
                     <h2 className="text-4xl font-bold text-center mb-8 text-blue-950">Search for Vendors</h2>
                     <div className="bg-white p-8 rounded-lg shadow-lg">
