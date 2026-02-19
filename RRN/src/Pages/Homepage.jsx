@@ -70,6 +70,8 @@ export default function Home() {
                     <h2 className="text-4xl font-bold mb-4">Ready to Review</h2>
                     <p className="text-xl mb-8 text-blue-100">Join thousands of satisfied users today</p>
                     <Link to="/Signin" className="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 inline-block">Sign In Now</Link>
+                    <p>OR</p>
+                    <Link to="/login" className="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 inline-block">Login</Link>
                 </div>
             </div>
         </>
