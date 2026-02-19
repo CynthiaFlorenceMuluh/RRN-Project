@@ -54,6 +54,7 @@ export default function Home() {
                                         <div key={index} className="p-3 bg-white border border-gray-300 rounded hover:shadow-md transition">
                                             <p className="font-semibold text-blue-600">{vendor}</p>
                                             <p className="text-sm text-gray-600">Rating: ⭐⭐⭐⭐⭐</p>
+                                            <p className="text-sm text-gray-600">Review: i have bought from the vendor twice i can honestly say his cheap and he gives quality</p>
                                         </div>
                                     ))}
                                 </div>
