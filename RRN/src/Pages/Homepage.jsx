@@ -64,8 +64,60 @@ export default function Home() {
                 </div>
             </div>
 
+            {/* Testimonials Section */}
+            <div className="py-16 bg-white">
+                <div className="max-w-6xl mx-auto px-6">
+                    <h2 className="text-4xl font-bold text-center mb-4 text-blue-950">Real Vendor Experiences</h2>
+                    <p className="text-center text-gray-600 mb-12 text-lg">What customers say about the vendors they've worked with</p>
+                    
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {/* Testimonial 1 */}
+                        <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                            <div className="flex items-center mb-4">
+                                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">CB</div>
+                                <div className="ml-4">
+                                    <p className="font-semibold text-gray-800">Cho Blaise</p>
+                                    <p className="text-sm text-gray-600">About: Blessed Pastrie</p>
+                                </div>
+                            </div>
+                            <div className="text-yellow-400 mb-3">⭐⭐⭐⭐⭐</div>
+                            <p className="text-gray-700 mb-3">"Excellent Experience"</p>
+                            <p className="text-gray-700">"A very proffesional vendor,I ordered some tarts and it was delivered on time.The packaging was neat and the product quality exceeded my expectations. I will always recommend him the pastries."</p>
+                        </div>
+
+                        {/* Testimonial 2 */}
+                        <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                            <div className="flex items-center mb-4">
+                                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">MA</div>
+                                <div className="ml-4">
+                                    <p className="font-semibold text-gray-800">Martins Ande</p>
+                                    <p className="text-sm text-gray-600">About:Martinez gadget space  </p>
+                                </div>
+                            </div>
+                            <div className="text-yellow-400 mb-3">⭐⭐⭐</div>
+                            <p className="text-gray-700 mb-3">"quality good but delayed"</p>
+                            <p className="text-gray-700">"Quality Materials provides excellent products at competitive rates. They're responsive to inquiries and flexible with orders. Only minor issue was a slight delay once, but overall very reliable!"</p>
+                        </div>
+
+                        {/* Testimonial 3 */}
+                        <div className="bg-blue-50 border-l-4 border-blue-600 p-6 rounded-lg shadow-md hover:shadow-lg transition">
+                            <div className="flex items-center mb-4">
+                                <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">UO</div>
+                                <div className="ml-4">
+                                    <p className="font-semibold text-gray-800">Uche Obiri</p>
+                                    <p className="text-sm text-gray-600">About: skin care Co</p>
+                                </div>
+                            </div>
+                            <div className="text-yellow-400 mb-3">⭐</div>
+                            <p className="text-gray-700 mb-3">"poor business"</p>
+                            <p className="text-gray-700">"I bought twice from him, it was a mess. Instead of the list of product i commanded this man did not follow my list but did his own.i would never recommend him to someone"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
          
-            <div className="bg-blue-950 text-white py-16">
+            <div className="bg-blue-800 text-white py-16">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <h2 className="text-4xl font-bold mb-4">Ready to Review</h2>
                     <p className="text-xl mb-8 text-blue-100">Join thousands of satisfied users today</p>
@@ -73,6 +125,9 @@ export default function Home() {
                     <p>OR</p>
                     <Link to="/login" className="bg-white text-blue-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 inline-block">Login</Link>
                 </div>
+            </div>
+            <div>
+                
             </div>
         </>
     );

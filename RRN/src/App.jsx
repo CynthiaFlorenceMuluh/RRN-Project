@@ -4,9 +4,9 @@ import Homepage from './Pages/Homepage.jsx'
 import Signin from './Pages/Signin.jsx'
 import Navbar from './assets/Component/Navigation.jsx'
 import Footer from './assets/Component/Footer.jsx'
-import Account from './Pages/Create_Account.jsx'
-import Business from './Pages/business_details.jsx'
+import Review from './Pages/Review.jsx'
 import Login from './Pages/login.jsx'
+import About from './Pages/About.jsx'
 function App() {
   return (
     <div>
@@ -15,8 +15,9 @@ function App() {
       <Route path='/' element={<Homepage/>} />
       <Route path='/Signin' element={<Signin/>} />
       <Route path='/login' element={<Login/>}/>
-      <Route path='/Create_Account' element={<Account/>}/>
-      <Route path='/Business_detail' element={<Business/>}/>
+      <Route path='/review' element={<Review/>}/>
+       <Route path='/About' element={<About/>}/>
+     
       </Routes>
     <Footer/>
      

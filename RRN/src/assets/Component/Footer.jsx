@@ -1,6 +1,6 @@
 export default function Footer() {
     return (
-        <footer className="w-full bg-blue-950 text-white mt-10">
+        <footer className="w-full bg-blue-800 text-white mt-10">
             <div className="max-w-6xl mx-auto px-6 py-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     {/* Company Info */}
@@ -17,7 +17,7 @@ export default function Footer() {
                         <ul className="space-y-2 text-sm">
                             <li><a href="/" className="text-gray-300 hover:text-white">Home</a></li>
                             <li><a href="/Signin" className="text-gray-300 hover:text-white">Sign In</a></li>
-                            <li><a href="#" className="text-gray-300 hover:text-white">About Us</a></li>
+                            <li><a href="/About" className="text-gray-300 hover:text-white">About</a></li>
                             <li><a href="#" className="text-gray-300 hover:text-white">Contact</a></li>
                         </ul>
                     </div>
