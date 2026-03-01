@@ -1,41 +1,87 @@
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 export default function Review() {
-    const [reviews, setReviews] = useState([
-        {
-            id: 1,
-            vendor: "Tech Supplies Ltd",
-            phone: "+237 650-148-156",
-            reviewer: "John Amah",
-            rating: 5,
-            date: "2024-02-15",
-            title: "Excellent Service",
-            comment: "Outstanding quality products and very professional service. Highly recommended!",
-            helpful: 45
-        },
-        {
-            id: 2,
-            vendor: "Quality Materials Co",
-            phone: "+237 678-234-890",
-            reviewer: "Mariam Kone",
-            rating: 4,
-            date: "2024-02-10",
-            title: "Good but slow delivery",
-            comment: "Products are good quality but delivery took longer than expected.",
-            helpful: 32
-        },
-        {
-            id: 3,
-            vendor: "Fast Distribution",
-            phone: "+237 690-456-123",
-            reviewer: "David Che",
-            rating: 5,
-            date: "2024-02-08",
-            title: "Best vendor so far",
-            comment: "Quick delivery, excellent communication, and competitive pricing. 10/10!",
-            helpful: 58
+    const { user, logout } = useAuth();
+    const [reviews, setReviews] = useState(() => {
+        const savedReviews = localStorage.getItem('reviews');
+        if (savedReviews) {
+            try {
+                return JSON.parse(savedReviews);
+            } catch {
+                return [
+                    {
+                        id: 1,
+                        vendor: "Theresita's pastries",
+                        phone: "+237 650-148-156",
+                        reviewer: "Mandey",
+                        rating: 5,
+                        date: "2024-02-15",
+                        title: "Excellent Service",
+                        comment: "Outstanding quality pastries and very professional service. Highly recommended!",
+                        helpful: 15
+                    },
+                    {
+                        id: 2,
+                        vendor: "Rosan beauty Ltd",
+                        phone: "+237 678-234-890",
+                        reviewer: "Cynthia",
+                        rating: 4,
+                        date: "2024-02-10",
+                        title: "Good but slow delivery",
+                        comment: "Products are good quality but delivery took a lttle bit longer than expected.",
+                        helpful: 10
+                    },
+                    {
+                        id: 3,
+                        vendor: "Chancelor",
+                        phone: "+237 690-456-123",
+                        reviewer: "Alex",
+                        rating: 5,
+                        date: "2024-02-08",
+                        title: "Best vendor so far",
+                        comment: "Quick delivery, excellent communication, and competitive pricing. 10/10!",
+                        helpful: 20
+                    }
+                ];
+            }
         }
-    ]);
+        return [
+            {
+                id: 1,
+                vendor: "Theresita's pastries",
+                phone: "+237 650-148-156",
+                reviewer: "Mandey",
+                rating: 5,
+                date: "2024-02-15",
+                title: "Excellent Service",
+                comment: "Outstanding quality pastries and very professional service. Highly recommended!",
+                helpful: 15
+            },
+            {
+                id: 2,
+                vendor: "Rosan beauty Ltd",
+                phone: "+237 678-234-890",
+                reviewer: "Cynthia",
+                rating: 4,
+                date: "2024-02-10",
+                title: "Good but slow delivery",
+                comment: "Products are good quality but delivery took a lttle bit longer than expected.",
+                helpful: 10
+            },
+            {
+                id: 3,
+                vendor: "Chancelor",
+                phone: "+237 690-456-123",
+                reviewer: "Alex",
+                rating: 5,
+                date: "2024-02-08",
+                title: "Best vendor so far",
+                comment: "Quick delivery, excellent communication, and competitive pricing. 10/10!",
+                helpful: 20
+            }
+        ];
+    });
 
     const [formData, setFormData] = useState({
         vendor: "",
@@ -106,7 +152,7 @@ export default function Review() {
                 id: reviews.length + 1,
                 vendor: formData.vendor,
                 phone: formData.phone,
-                reviewer: "You",
+                reviewer: user.fullName,
                 rating: formData.rating,
                 date: new Date().toISOString().split('T')[0],
                 title: formData.title,
@@ -114,11 +160,14 @@ export default function Review() {
                 helpful: 0
             };
             
-            setReviews([newReview, ...reviews]);
-            setFilteredReviews([newReview, ...reviews]);
+            const updatedReviews = [newReview, ...reviews];
+            setReviews(updatedReviews);
+            setFilteredReviews(updatedReviews);
+            localStorage.setItem('reviews', JSON.stringify(updatedReviews));
             setFormData({ vendor: "", phone: "", rating: 5, title: "", comment: "" });
             setShowForm(false);
             setIsSubmitting(false);
+            alert("Review submitted successfully!");
         }, 1000);
     };
 
@@ -137,10 +186,27 @@ export default function Review() {
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-blue-100 py-12 px-4">
             <div className="max-w-4xl mx-auto">
+                {/* User Profile Header */}
+                <div className="mb-8 flex justify-between items-center bg-white rounded-lg shadow-lg p-6">
+                    <div>
+                        <h2 className="text-xl font-bold text-gray-800">Welcome, {user.fullName}!</h2>
+                        <p className="text-gray-600 text-sm">Logged in as: {user.email}</p>
+                    </div>
+                    <button
+                        onClick={() => {
+                            logout();
+                            window.location.href = "/login";
+                        }}
+                        className="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-red-700 transition"
+                    >
+                        Logout
+                    </button>
+                </div>
+
                 {/* Header */}
                 <div className="text-center mb-12">
                     <h1 className="text-4xl font-bold text-blue-950 mb-2">Vendor Reviews</h1>
-                    <p className="text-gray-600 text-lg">Read and share experiences with vendors</p>
+                    <p className="text-gray-600 text-lg">Share experiences with vendors</p>
                 </div>
 
                 {/* Write Review Button */}

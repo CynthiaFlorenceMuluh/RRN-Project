@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -8,6 +9,8 @@ export default function Login() {
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [loginSuccess, setLoginSuccess] = useState(false);
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const validateForm = () => {
         const newErrors = {};
@@ -39,15 +42,22 @@ export default function Login() {
         
         // Simulate API call
         setTimeout(() => {
-            setIsLoading(false);
-            setLoginSuccess(true);
-            setEmail("");
-            setPassword("");
+            const isAuthenticated = login(email, password);
             
-            // Redirect after 2 seconds
-            setTimeout(() => {
-                window.location.href = "/";
-            }, 2000);
+            if (isAuthenticated) {
+                setIsLoading(false);
+                setLoginSuccess(true);
+                setEmail("");
+                setPassword("");
+                
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    navigate("/review");
+                }, 2000);
+            } else {
+                setIsLoading(false);
+                setErrors({ submit: "Invalid email or password. Please check your credentials or sign up." });
+            }
         }, 1500);
     };
 
@@ -68,6 +78,13 @@ export default function Login() {
                         <div className="mb-6 p-4 bg-green-50 border border-green-500 rounded-lg text-green-700 text-center">
                             <p className="font-semibold">✓ Login Successful!</p>
                             <p className="text-sm mt-1">Redirecting...</p>
+                        </div>
+                    )}
+
+                    {errors.submit && (
+                        <div className="mb-6 p-4 bg-red-50 border border-red-500 rounded-lg text-red-700 text-center">
+                            <p className="font-semibold">✕ Login Failed</p>
+                            <p className="text-sm mt-1">{errors.submit}</p>
                         </div>
                     )}
 

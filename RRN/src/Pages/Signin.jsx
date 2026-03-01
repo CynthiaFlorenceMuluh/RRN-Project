@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export default function Signin() {
     const [formData, setFormData] = useState({
@@ -17,6 +18,8 @@ export default function Signin() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [signupSuccess, setSignupSuccess] = useState(false);
+    const { signup } = useAuth();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -87,29 +90,42 @@ export default function Signin() {
 
         // Simulate API call for registration
         setTimeout(() => {
-            setIsLoading(false);
-            setSignupSuccess(true);
-            
-            // Reset form
-            setFormData({
-                fullName: "",
-                email: "",
-                phone: "",
-                password: "",
-                confirmPassword: "",
-                businessType: "",
-                agreedToTerms: false
+            const registrationSuccess = signup({
+                fullName: formData.fullName,
+                email: formData.email,
+                phone: formData.phone,
+                password: formData.password,
+                businessType: formData.businessType
             });
 
-            // Redirect after 2 seconds
-            setTimeout(() => {
-                window.location.href = "/login";
-            }, 2000);
+            if (registrationSuccess) {
+                setIsLoading(false);
+                setSignupSuccess(true);
+                
+                // Reset form
+                setFormData({
+                    fullName: "",
+                    email: "",
+                    phone: "",
+                    password: "",
+                    confirmPassword: "",
+                    businessType: "",
+                    agreedToTerms: false
+                });
+
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    navigate("/login");
+                }, 2000);
+            } else {
+                setIsLoading(false);
+                setErrors({ submit: "Email already registered. Please use a different email or login." });
+            }
         }, 1500);
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-4">
+        <div className="min-h-screen bg-linear-to-br from-blue-50 to-blue-100 py-12 px-4">
             <div className="max-w-md mx-auto">
                 {/* Logo/Header */}
                 <div className="text-center mb-8">
@@ -125,6 +141,13 @@ export default function Signin() {
                         <div className="mb-6 p-4 bg-green-50 border border-green-500 rounded-lg text-green-700 text-center">
                             <p className="font-semibold">✓ Account Created Successfully!</p>
                             <p className="text-sm mt-1">Redirecting to login...</p>
+                        </div>
+                    )}
+
+                    {errors.submit && (
+                        <div className="mb-6 p-4 bg-red-50 border border-red-500 rounded-lg text-red-700 text-center">
+                            <p className="font-semibold">✕ Signup Failed</p>
+                            <p className="text-sm mt-1">{errors.submit}</p>
                         </div>
                     )}
 
