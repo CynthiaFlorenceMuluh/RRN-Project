@@ -198,8 +198,8 @@ export default function Home() {
                             onClick={() => setVendorType("good")}
                             className={`px-8 py-3 rounded-md font-semibold transition ${
                                 vendorType === "good"
-                                    ? "bg-green-600 text-white"
-                                    : "bg-white text-green-600 border-2 border-green-600 hover:bg-green-50"
+                                    ? "bg-blue-600 text-white"
+                                    : "bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50"
                             }`}
                         >
                             ⭐ Good Vendors
@@ -223,7 +223,7 @@ export default function Home() {
                                 key={index} 
                                 className={`border-l-4 p-6 rounded-lg shadow-md hover:shadow-lg transition ${
                                     vendorType === "good"
-                                        ? "bg-white border-green-600"
+                                        ? "bg-white border-blue-600"
                                         : "bg-white border-red-600"
                                 }`}
                             >
@@ -246,7 +246,7 @@ export default function Home() {
                             onClick={() => setShowMoreReviews(!showMoreReviews)}
                             className={`px-6 py-3 rounded-md font-semibold transition ${
                                 vendorType === "good"
-                                    ? "bg-green-600 text-white hover:bg-green-700"
+                                    ? "bg-blue-600 text-white hover:bg-blue-700"
                                     : "bg-red-600 text-white hover:bg-red-700"
                             }`}
                         >
