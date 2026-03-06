@@ -1,87 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { supabase } from "../Lib/Supabase";
 import { useAuth } from "../context/AuthContext";
-
 export default function Review() {
-    const { user, logout } = useAuth();
-    const [reviews, setReviews] = useState(() => {
-        const savedReviews = localStorage.getItem('reviews');
-        if (savedReviews) {
-            try {
-                return JSON.parse(savedReviews);
-            } catch {
-                return [
-                    {
-                        id: 1,
-                        vendor: "Theresita's pastries",
-                        phone: "+237 650-148-156",
-                        reviewer: "Mandey",
-                        rating: 5,
-                        date: "2024-02-15",
-                        title: "Excellent Service",
-                        comment: "Outstanding quality pastries and very professional service. Highly recommended!",
-                        helpful: 15
-                    },
-                    {
-                        id: 2,
-                        vendor: "Rosan beauty Ltd",
-                        phone: "+237 678-234-890",
-                        reviewer: "Cynthia",
-                        rating: 4,
-                        date: "2024-02-10",
-                        title: "Good but slow delivery",
-                        comment: "Products are good quality but delivery took a lttle bit longer than expected.",
-                        helpful: 10
-                    },
-                    {
-                        id: 3,
-                        vendor: "Chancelor",
-                        phone: "+237 690-456-123",
-                        reviewer: "Alex",
-                        rating: 5,
-                        date: "2024-02-08",
-                        title: "Best vendor so far",
-                        comment: "Quick delivery, excellent communication, and competitive pricing. 10/10!",
-                        helpful: 20
-                    }
-                ];
-            }
-        }
-        return [
-            {
-                id: 1,
-                vendor: "Theresita's pastries",
-                phone: "+237 650-148-156",
-                reviewer: "Mandey",
-                rating: 5,
-                date: "2024-02-15",
-                title: "Excellent Service",
-                comment: "Outstanding quality pastries and very professional service. Highly recommended!",
-                helpful: 15
-            },
-            {
-                id: 2,
-                vendor: "Rosan beauty Ltd",
-                phone: "+237 678-234-890",
-                reviewer: "Cynthia",
-                rating: 4,
-                date: "2024-02-10",
-                title: "Good but slow delivery",
-                comment: "Products are good quality but delivery took a lttle bit longer than expected.",
-                helpful: 10
-            },
-            {
-                id: 3,
-                vendor: "Chancelor",
-                phone: "+237 690-456-123",
-                reviewer: "Alex",
-                rating: 5,
-                date: "2024-02-08",
-                title: "Best vendor so far",
-                comment: "Quick delivery, excellent communication, and competitive pricing. 10/10!",
-                helpful: 20
-            }
-        ];
-    });
+    const { user } = useAuth();
+    const [reviews, setReviews] = useState([]);
+    const [filteredReviews, setFilteredReviews] = useState([]); 
+   
+    const [searchPhone, setSearchPhone] = useState("");
+   
+    const [sortBy, setSortBy] = useState("recent");
+    const [showForm, setShowForm] = useState(false);
+    
+    const [isSubmitting, setIsSubmitting] = useState(false); 
+    const [loading, setLoading] = useState(true);
+   
 
     const [formData, setFormData] = useState({
         vendor: "",
@@ -91,11 +23,28 @@ export default function Review() {
         comment: ""
     });
 
-    const [filteredReviews, setFilteredReviews] = useState(reviews);
-    const [searchPhone, setSearchPhone] = useState("");
-    const [sortBy, setSortBy] = useState("recent");
-    const [showForm, setShowForm] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    // Load reviews from Supabase on mountom Supabase on mount
+    useEffect(() => {
+        if (user) {
+            loadReviews();
+        }
+    }, [user]);
+
+    async function loadReviews() {
+        setLoading(true);
+        const { data, error } = await supabase
+            .from('reviews')
+            .select('*')
+            .order('created_at', { ascending: false });
+        
+        if (error) {
+            console.error('Error loading reviews:', error);
+        } else {
+            setReviews(data || []);
+            setFilteredReviews(data || []);
+        }
+        setLoading(false);
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -125,13 +74,13 @@ export default function Review() {
         
         let sorted = [...filteredReviews];
         if (value === "recent") {
-            sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+            sorted.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
         } else if (value === "highest") {
             sorted.sort((a, b) => b.rating - a.rating);
         } else if (value === "lowest") {
             sorted.sort((a, b) => a.rating - b.rating);
         } else if (value === "helpful") {
-            sorted.sort((a, b) => b.helpful - a.helpful);
+            sorted.sort((a, b) => (b.helpful || 0) - (a.helpful || 0));
         }
         setFilteredReviews(sorted);
     };
@@ -146,29 +95,34 @@ export default function Review() {
 
         setIsSubmitting(true);
         
-        // Simulate API call
-        setTimeout(() => {
-            const newReview = {
-                id: reviews.length + 1,
-                vendor: formData.vendor,
-                phone: formData.phone,
-                reviewer: user.fullName,
-                rating: formData.rating,
-                date: new Date().toISOString().split('T')[0],
-                title: formData.title,
-                comment: formData.comment,
-                helpful: 0
-            };
-            
-            const updatedReviews = [newReview, ...reviews];
-            setReviews(updatedReviews);
-            setFilteredReviews(updatedReviews);
-            localStorage.setItem('reviews', JSON.stringify(updatedReviews));
+        const newReview = {
+            user_id: user.id,
+            vendor: formData.vendor,
+            phone: formData.phone,
+            reviewer: user.user_metadata?.full_name || user.email,
+            rating: formData.rating,
+            title: formData.title,
+            comment: formData.comment,
+            helpful: 0,
+            created_at: new Date().toISOString()
+        };
+
+        const { data, error } = await supabase
+            .from('reviews')
+            .insert([newReview])
+            .select();
+
+        if (error) {
+            console.error('Error submitting review:', error);
+            alert("Failed to submit review. Please try again.");
+        } else {
+            setReviews([data[0], ...reviews]);
+            setFilteredReviews([data[0], ...filteredReviews]);
             setFormData({ vendor: "", phone: "", rating: 5, title: "", comment: "" });
             setShowForm(false);
-            setIsSubmitting(false);
             alert("Review submitted successfully!");
-        }, 1000);
+        }
+        setIsSubmitting(false);
     };
 
     const renderStars = (rating) => {
@@ -183,18 +137,22 @@ export default function Review() {
         );
     };
 
+    if (loading) {
+        return <div className="text-center py-12">Loading reviews...</div>;
+    }
+
     return (
         <div className="min-h-screen bg-linear-to-br from-blue-50 to-blue-100 py-12 px-4">
             <div className="max-w-4xl mx-auto">
                 {/* User Profile Header */}
                 <div className="mb-8 flex justify-between items-center bg-white rounded-lg shadow-lg p-6">
                     <div>
-                        <h2 className="text-xl font-bold text-gray-800">Welcome, {user.fullName}!</h2>
-                        <p className="text-gray-600 text-sm">Logged in as: {user.email}</p>
+                        <h2 className="text-xl font-bold text-gray-800">Welcome, {user?.user_metadata?.full_name || user?.email}!</h2>
+                        <p className="text-gray-600 text-sm">Logged in as: {user?.email}</p>
                     </div>
                     <button
                         onClick={() => {
-                            logout();
+                            supabase.auth.signOut();
                             window.location.href = "/login";
                         }}
                         className="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-red-700 transition"
@@ -342,7 +300,7 @@ export default function Review() {
                                     </div>
                                     <div className="text-right">
                                         <div className="mb-2">{renderStars(review.rating)}</div>
-                                        <p className="text-gray-500 text-xs">{review.date}</p>
+                                        <p className="text-gray-500 text-xs">{new Date(review.created_at).toLocaleDateString()}</p>
                                     </div>
                                 </div>
 
@@ -358,7 +316,7 @@ export default function Review() {
                                         <span className="font-semibold">By:</span> {review.reviewer}
                                     </p>
                                     <button className="text-sm text-blue-600 hover:text-blue-700 font-semibold">
-                                        👍 Helpful ({review.helpful})
+                                        👍 Helpful ({review.helpful || 0})
                                     </button>
                                 </div>
                             </div>

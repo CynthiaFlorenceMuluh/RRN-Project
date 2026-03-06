@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../Lib/Supabase.jsx";
 import { useAuth } from "../context/AuthContext";
 
 export default function Signin() {
@@ -129,7 +130,7 @@ export default function Signin() {
             <div className="max-w-md mx-auto">
                 {/* Logo/Header */}
                 <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-blue-600 mb-2">TRUSTLINE</h1>
+                    <h1 className="text-4xl font-bold text-blue-600 mb-2">REVIEWIT</h1>
                     <p className="text-gray-600">Create Your Account</p>
                 </div>
 

@@ -5,9 +5,9 @@ export default function About(){
             {/* Hero Section */}
             <div className="bg-linear-to-r from-blue-600 to-blue-900 text-white py-20">
                 <div className="max-w-6xl mx-auto px-6 text-center">
-                    <h1 className="text-5xl font-bold mb-4">About TRUSTLINE</h1>
+                    <h1 className="text-5xl font-bold mb-4">About REVIEWIT</h1>
                     <p className="text-xl mb-8 text-blue-100">We build trust between businesses and their customers by providing transparent vendor reviews and verified contact information.</p>
-                    <p className="max-w-3xl mx-auto text-center text-blue-100">TRUSTLINE is a platform created to help small and medium businesses connect with reliable vendors. Our goal is to make commerce safer and more reliable by surfacing honest feedback, ratings and verified contact details.</p>
+                    <p className="max-w-3xl mx-auto text-center text-blue-100">REVIEWIT is a platform created to help small and medium businesses connect with reliable vendors. Our goal is to make commerce safer and more reliable by surfacing honest feedback, ratings and verified contact details.</p>
                 </div>
             </div>
 
@@ -45,9 +45,9 @@ export default function About(){
 
                     <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
                         <h4 className="text-xl font-semibold text-blue-950 mb-3">Get Involved</h4>
-                        <p className="text-gray-700 mb-4">Have a vendor to recommend or a review to share? Sign in to leave feedback or reach out to our team.</p>
+                        <p className="text-gray-700 mb-4">Have a vendor to recommend or a review to share? Sign up to leave feedback or reach out to our team.</p>
                         <div className="flex gap-4">
-                            <a href="/Signin" className="bg-blue-600 text-white px-5 py-2 rounded-md">Sign In</a>
+                            <a href="/Signin" className="bg-blue-600 text-white px-5 py-2 rounded-md">Sign Up</a>
                             <a href="/login" className="border border-blue-600 text-blue-600 px-5 py-2 rounded-md">Log In</a>
                         </div>
                     </div>

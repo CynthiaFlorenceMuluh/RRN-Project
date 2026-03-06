@@ -6,7 +6,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     {/* Company Info */}
                     <div>
-                        <h3 className="text-xl font-bold mb-4">TRUSTLINE</h3>
+                        <h3 className="text-xl font-bold mb-4">REVIEWIT</h3>
                         <p className="text-gray-300 text-sm">
                             Your trusted platform for secure, reliable and transparent business.
                         </p>
@@ -26,7 +26,7 @@ export default function Footer() {
                     {/* Contact Info */}
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Contact</h4>
-                        <p className="text-gray-300 text-sm mb-2">Email: info@trustline.com</p>
+                        <p className="text-gray-300 text-sm mb-2">Email: info@Reviewit.com</p>
                         <p className="text-gray-300 text-sm">Phone: + (237 650148156)
                         </p>
                     </div>
@@ -35,7 +35,7 @@ export default function Footer() {
                 {/* Divider */}
                 <div className="border-t border-gray-700 pt-6">
                     <p className="text-center text-gray-400 text-sm">
-                        &copy; 2026 TRUSTLINE. All rights reserved.
+                        &copy; 2026 REVIEWIT. All rights reserved.
                     </p>
                 </div>
             </div>
