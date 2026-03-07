@@ -180,7 +180,7 @@ export default function Home() {
                             </div>
                             <div className="text-yellow-400 mb-3">⭐⭐⭐⭐</div>
                             <p className="text-gray-700 mb-3">"Finally, a level playing field"</p>
-                            <p className="text-gray-700">"TRUSTLINE leveled the playing field for small businesses like mine. Being able to manage my reputation and respond to feedback has improved my service quality. Customers now feel confident buying from me because of the verified reviews on the platform."</p>
+                            <p className="text-gray-700">"REVIEWIT leveled the playing field for small businesses like mine. Being able to manage my reputation and respond to feedback has improved my service quality. Customers now feel confident buying from me because of the verified reviews on the platform."</p>
                         </div>
                     </div>
                 </div>

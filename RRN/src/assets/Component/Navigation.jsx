@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import LogoRe from "../img/LogoRe.jpg";
 
 
 export default function Navbar() {
@@ -16,7 +17,7 @@ export default function Navbar() {
     return (
         <nav className="w-full bg-white border-b">
             <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-                <Link to="/" className="text-2xl font-bold text-blue-950 hover:text-blue-600 transition">REVIEWIT</Link>
+                <Link to="/" className="text-2xl font-bold text-blue-950 hover:text-blue-600 transition"><img src={LogoRe} alt="Logo" className="h-20"></img></Link>
                 
                 {/* Hamburger Icon - visible on mobile */}
                 <button
