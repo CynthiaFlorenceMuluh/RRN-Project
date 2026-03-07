@@ -32,7 +32,7 @@ export default function Navbar() {
 
                 {/* Desktop Menu - visible on large screens */}
                 <div className="hidden lg:flex gap-6 items-center text-sm">
-                    <Link to='/Signin' className="text-gray-700 hover:text-blue-600">SignIn</Link>
+                    <Link to='/Signin' className="text-gray-700 hover:text-blue-600">SignUp</Link>
                     <Link to='/login' className="text-gray-700 hover:text-blue-600">LogIn</Link>
                 </div>
 
