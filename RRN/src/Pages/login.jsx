@@ -67,7 +67,7 @@ export default function Login() {
             <div className="w-full max-w-md">
                 {/* Logo/Header */}
                 <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-blue-600 mb-2">TRUSTLINE</h1>
+                    <h1 className="text-4xl font-bold text-blue-600 mb-2">REVIEWIT</h1>
                     <p className="text-gray-600">Building Trust in Business</p>
                 </div>
 
