@@ -147,18 +147,10 @@ export default function Review() {
                 {/* User Profile Header */}
                 <div className="mb-8 flex justify-between items-center bg-white rounded-lg shadow-lg p-6">
                     <div>
-                        <h2 className="text-xl font-bold text-gray-800">Welcome, {user?.user_metadata?.full_name || user?.email}!</h2>
-                        <p className="text-gray-600 text-sm">Logged in as: {user?.email}</p>
+                        <h2 className="text-xl font-bold text-gray-800">Welcome, {user?.user_metadata?.full_name || user?.user}!</h2>
+                        <p className="text-gray-600 text-sm">Logged in as: {user?.user}</p>
                     </div>
-                    <button
-                        onClick={() => {
-                            supabase.auth.signOut();
-                            window.location.href = "/login";
-                        }}
-                        className="bg-red-600 text-white font-semibold px-6 py-2 rounded-lg hover:bg-red-700 transition"
-                    >
-                        Logout
-                    </button>
+                    
                 </div>
 
                 {/* Header */}
